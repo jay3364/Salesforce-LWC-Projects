@@ -1,0 +1,20 @@
+/* CSS classes to style the elements */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-section,
+.query-section,
+.button-section {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.query-section {
+    background-color: #f5f5f5;
+}
+
+/* Add more specific styling as needed */

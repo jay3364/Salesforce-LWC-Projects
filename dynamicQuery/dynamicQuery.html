@@ -1,0 +1,50 @@
+<template>
+    <lightning-card title="Dynamic Object and Field Selection">
+        <div class="container slds-p-around_medium">
+            <label for="objectSelect">Select an Object:</label>
+            <select id="objectSelect" onchange={handleObjectSelection}>
+                <option value="">--Select Object--</option>
+                <template for:each={objectOptions} for:item="object">
+                    <option key={object.value} value={object.value}>{object.label}</option>
+                </template>
+            </select>
+            
+            <template if:true={selectedObject}>
+                <p>Selected Object: {selectedObject}</p>
+                <label for="fieldSelect">Select a Field:</label>
+                <select id="fieldSelect" multiple onchange={handleFieldSelection}>
+                    <option value="">--Select Field--</option>
+                    <template for:each={fieldOptions} for:item="field">
+                        <option key={field.value} value={field.value}>{field.label}</option>
+                    </template>
+                </select>
+            </template>
+            <!-- <template if:true={selectedField}>
+                <p>Selected Field: {selectedFieldsJoined}</p>
+            </template> -->
+            <template if:true={selectedFields}>
+                <p>Selected Field: {selectedFields}</p>
+            </template>
+            <lightning-input type="number" pattern="\d*" onchange={limits} ></lightning-input>
+
+            <p>SELECT {selectedFields} FROM {selectedObject}</p>
+
+            <p>================ {qeary}=====================</p>
+           
+            <lightning-datatable
+              key-field="id"    
+              data={records}
+              columns={column}
+              hide-checkbox-column="true"
+              ></lightning-datatable>
+              <!-- if:true={records.length} -->
+            
+        </div>
+        
+       
+            <!-- ...Existing code for object and field selection dropdowns... -->
+            <lightning-button label="Generate Query" onclick={handleButtonClick}></lightning-button>
+        
+       
+    </lightning-card>
+</template>
