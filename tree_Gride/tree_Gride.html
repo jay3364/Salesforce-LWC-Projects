@@ -1,0 +1,30 @@
+<template>
+    <lightning-card>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size_1-of-2">
+                <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">
+                    <lightning-card title="Account Hierarchy">
+                        <template if:true={treeList}>
+                            <lightning-tree items={treeList} header="Accounts" name={treeList.Id} key-field="accountId" onselect={handleNodeSelect}></lightning-tree>
+                        </template>
+                        <template if:false={treeList}>
+                            No data available.
+                        </template>
+                    </lightning-card>
+                </div>
+            </div>
+            <div class="slds-size_1-of-2">
+                <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">
+                    <template if:true={selected}>
+                        <lightning-record-form
+                            object-api-name={objectApiName}
+                            record-id={selected}
+                            fields={fields}
+                        >
+                        </lightning-record-form>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>
